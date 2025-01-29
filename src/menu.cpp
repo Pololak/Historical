@@ -802,14 +802,6 @@ void RenderMain() {
         {
             WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(libcocosbase + 0xAC38C), "\x89\x41\x10", 3, NULL);
         }
-        if (setting().onBetterLevelUpdate)
-        {
-            WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x49e1ed), "\x90\x90", 2, NULL);
-        }
-        else
-        {
-            WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x49e1ed), "\x74\x0e", 2, NULL);
-        }
         if (setting().onConfirmExit)
         {
             WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x4d6540), "\x90\x90\x90\x90\x90", 5, NULL); //Deleting exit sequence from onQuit button
@@ -1134,17 +1126,6 @@ void RenderMain() {
                 else
                 {
                     WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(libcocosbase + 0x60598), "\xF3\x0F\x11\x41\x1C\xF3\x0F\x11\x41\x18", 10, NULL);
-                }
-            }
-            if (ImGui::Checkbox("Better Level Update", &setting().onBetterLevelUpdate))
-            {
-                if (setting().onBetterLevelUpdate)
-                {
-                    WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x49e1ed), "\x90\x90", 2, NULL);    
-                }
-                else
-                {
-                    WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x49e1ed), "\x74\x0e", 2, NULL);
                 }
             }
             if (ImGui::Checkbox("Confirm exit", &setting().onConfirmExit))
@@ -1580,7 +1561,7 @@ void RenderMain() {
                     WriteProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x490f94), "\x72\x79", 2, NULL);
                 }
             }
-            if (ImGui::Checkbox("Zoom Bypass", &setting().onZoomBypass)) //Допилить
+            if (ImGui::Checkbox("Zoom Bypass", &setting().onZoomBypass)) //Г„Г®ГЇГЁГ«ГЁГІГј
             {
                 if (setting().onZoomBypass)
                 {
